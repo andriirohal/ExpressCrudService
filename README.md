@@ -7,8 +7,9 @@ A REST API built with Node.js, Express, and TypeScript for learning backend deve
 ## ✨ Features
 
 - Get all products  
-- Get product by ID  
-- Create new product  
+- Get product by ID
+- Create new product
+- Delete product by ID
 - Type-safe with TypeScript  
 - JSON file storage  
 
