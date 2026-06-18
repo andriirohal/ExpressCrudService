@@ -6,7 +6,7 @@ import type { Product, ProductInput, Result } from "../types";
 
 const filePath = path.join(process.cwd(), "src/data/products.json");
 
-const findById = (products: Product[], id: string) => { 
+const findById = (products: Product[], id: string): Product | undefined => {
   return products.find((p) => p.id === id);
 }; 
 
@@ -49,7 +49,7 @@ export async function getProductById(id: string): Promise<Result<Product>> {
   } catch {
     return {
       success: false,
-      error: "Failed to get product"
+      error: "Could not get product"
     };
   };
 };

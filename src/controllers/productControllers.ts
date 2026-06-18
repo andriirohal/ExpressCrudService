@@ -1,9 +1,7 @@
 import { Request, Response } from "express";
-import { createProduct, getAllProducts, getProductById, deleteProduct } from "../repositories";
 
-function validateId(id: unknown): id is string {
-  return typeof id === "string" && id.trim().length > 0;
-};
+import { createProduct, getAllProducts, getProductById, deleteProduct } from "../repositories";
+import { validateId } from "../utils";
 
 export const getAllProductsController = async (req: Request, res: Response) => {
   const products = await getAllProducts();
@@ -55,7 +53,7 @@ export const deleteProductController = async (req: Request, res: Response) => {
   } catch {
     return res.status(500).json({
       success: false,
-      error: "Failed to delete product"
+      error: "Could not delete product"
     });
   };
 };
