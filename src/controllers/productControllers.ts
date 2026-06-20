@@ -6,7 +6,7 @@ export const getProductByIdController = async (req: Request, res: Response) => {
   try {
     const id = String(req.params.id);
 
-    if(!id?.trim()) {
+    if(!id.trim()) {
       return res.status(400).json({
         success: false,
         error: "Invalid product ID"
@@ -53,7 +53,7 @@ export const deleteProductController = async (req: Request, res: Response) => {
   try {
     const id = String(req.params.id);
 
-    if(!id?.trim()) {
+    if(!id.trim()) {
       return res.status(400).json({
         success: false,
         error: "Invalid product ID"
@@ -81,7 +81,7 @@ export const updateProductController = async (req: Request, res: Response) => {
   try {
     const id = String(req.params.id);
 
-    if(!id?.trim()) {
+    if(!id.trim()) {
       return res.status(400).json({
         success: false,
         error: "Invalid product ID"
@@ -109,11 +109,7 @@ export const getAllProductsController = async (req: Request, res: Response) => {
   try {
     const products = await getAllProducts();
     
-    return res.status(200).json({
-      success: true,
-      data: products
-    });
-  
+    return res.status(200).json(products);
   } catch(error) {
     console.error(error);
 
