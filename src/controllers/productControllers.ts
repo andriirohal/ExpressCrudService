@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { validate as isUuid } from "uuid";
 
 import { createProduct, getAllProducts, getProductById, deleteProduct, updateProduct } from "../repositories";
 
@@ -6,7 +7,7 @@ export const getProductByIdController = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
 
-    if(!id || typeof id !== "string" || id.trim().length === 0) {
+    if(typeof id !== "string" || !isUuid(id)) {
       return res.status(400).json({
         success: false,
         error: "Invalid product ID"
@@ -53,7 +54,7 @@ export const deleteProductController = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
 
-    if(!id || typeof id !== "string" || id.trim().length === 0) {
+    if(typeof id !== "string" || !isUuid(id)) {
       return res.status(400).json({
         success: false,
         error: "Invalid product ID"
@@ -81,7 +82,7 @@ export const updateProductController = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
 
-    if(!id || typeof id !== "string" || id.trim().length === 0) {
+    if(typeof id !== "string" || !isUuid(id)) {
       return res.status(400).json({
         success: false,
         error: "Invalid product ID"
